@@ -6,11 +6,11 @@ package com.shamlu.app.android.buildsrc
  */
 object Versions {
     const val vSdkMin = 17
-    const val vSdkTarget = 28
-    const val vSdkCompile = 28
-    const val vVersionCode = 47
-    const val vVersionName = "1.6.2 - IRA"
-    const val vBuildTool = "27.0.3"
+    const val vSdkTarget = 29
+    const val vSdkCompile = 29
+    const val vVersionCode = 1
+    const val vVersionName = "1.1.1"
+    const val vBuildTool = "29.0.3"
     const val vKotlin = "1.3.50"
 
     const val vSupportLib = "28.0.0"
@@ -203,5 +203,5 @@ object TestLibraries {
 
 object Modules {
     const val app = ":app"
-    const val navigation = ":navigation"
+    const val common = ":common"
 }

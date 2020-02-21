@@ -14,12 +14,14 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 apply plugin: 'kotlin-kapt'
 
+apply from: '../modules_common.gradle'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.shamlu.spotify"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -62,6 +64,8 @@ dependencies {
     implementation Deps.depRetrofitConvertorGson
     implementation Deps.depRetrofitConvertorScalar
 
+    // COMMON
+    implementation project(Modules.common)
 
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag

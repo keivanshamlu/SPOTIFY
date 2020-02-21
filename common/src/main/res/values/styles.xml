@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:includeFontPadding">false</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+    </style>
+
+    <style name="ToolbarTextApperanceCollapsed" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="ToolbarTextApperanceExpanded" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">32sp</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearanceError" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="GuidanceDescription">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+    </style>
+
+    <style name="SwitchCompatTheme">
+    </style>
+
+    <style name="BottomSheetDialogSlideAnimation">
+    </style>
+
+    <style name="helperTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:gravity">start</item>
+        <item name="android:textDirection">ltr</item>
+    </style>
+
+    <style name="TextAppearanceHint" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+</resources>

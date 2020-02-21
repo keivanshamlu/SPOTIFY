@@ -1,0 +1,28 @@
+import com.shamlu.app.android.buildsrc.Versions
+import com.shamlu.app.android.buildsrc.KotlinLibraries
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.vSdkCompile
+    defaultConfig {
+        minSdkVersion Versions.vSdkMin
+        targetSdkVersion Versions.vSdkTarget
+        versionCode Versions.vVersionCode
+        versionName Versions.vVersionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation KotlinLibraries.kotlin
+}
