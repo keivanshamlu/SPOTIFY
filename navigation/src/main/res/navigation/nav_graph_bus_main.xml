@@ -8,7 +8,7 @@
 
     <!-- Bus Main Fragment -->
 <!--    <fragment android:id="@+id/fragment_bus_main"-->
-<!--        android:name="com.mydigipay.bus.FragmentMainBus"-->
+<!--        android:name="com..bus."-->
 <!--        android:label="bus">-->
 
 <!--         &lt;!&ndash;Go to Bus Destination Fragment &ndash;&gt;-->
@@ -21,7 +21,7 @@
 
 <!--    &lt;!&ndash; Bus Destination Fragment &ndash;&gt;-->
 <!--    <fragment android:id="@+id/busDestinationFragment"-->
-<!--        android:name="com.mydigipay.bus.FragmentBusDestination"-->
+<!--        android:name="com..bus."-->
 <!--        android:label="Bus Destination">-->
 <!--    </fragment>-->
 

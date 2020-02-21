@@ -1,0 +1,15 @@
+import com.shamlu.app.android.buildsrc.Deps
+import com.shamlu.app.android.buildsrc.Libraries
+apply plugin: 'com.android.library'
+apply from: '../modules_common.gradle'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.depKotlin
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation Libraries.daggerDaggerAndroid
+    implementation Libraries.daggerDaggerAndroidSupport
+    kapt Libraries.daggerDaggerAndroidProcessor
+}

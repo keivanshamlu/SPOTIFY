@@ -72,10 +72,4 @@ dependencies {
     implementation AndroidLibraries.navigationFrag
     implementation AndroidLibraries.coreKtx
 
-    implementation Libraries.dagger
-    kapt Libraries.daggerCompiler
-    implementation Libraries.daggerDaggerAndroid
-    implementation Libraries.daggerDaggerAndroidSupport
-    kapt Libraries.daggerDaggerAndroidProcessor
-
 }

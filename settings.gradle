@@ -1,2 +1,2 @@
-include ':app', ':buildSrc', ':common', ':navigation'
+include ':app', ':buildSrc', ':common', ':navigation', ':di'
 rootProject.name='Spotify'
