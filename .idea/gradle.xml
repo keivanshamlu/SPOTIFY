@@ -11,8 +11,13 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/data-database" />
+            <option value="$PROJECT_DIR$/data-network" />
+            <option value="$PROJECT_DIR$/data-network-mock" />
             <option value="$PROJECT_DIR$/di" />
             <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/domain-impl" />
+            <option value="$PROJECT_DIR$/domain-network-impl" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>

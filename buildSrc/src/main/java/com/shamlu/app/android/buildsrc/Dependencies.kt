@@ -207,4 +207,6 @@ object Modules {
     const val navigation = ":navigation"
     const val di = ":di"
     const val domain = ":domain"
+    const val domainImple = ":domain-impl"
+    const val domainNetworkImple = ":domain-network-impl"
 }

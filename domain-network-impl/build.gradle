@@ -1,0 +1,28 @@
+import com.shamlu.app.android.buildsrc.Deps
+import com.shamlu.app.android.buildsrc.Modules
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":domain")
+    implementation Deps.depSupportAnnotation
+    implementation Deps.depKotlin
+    api Deps.depJavax
+
+    testImplementation Deps.depRetrofitAdapterRxJava2
+    testImplementation Deps.depOkHttpInterceptor
+    testImplementation Deps.depRetrofitConvertorGson
+
+    testImplementation Deps.depTestJunit
+    testImplementation Deps.depOkHttpMockwebserver
+}
+
+sourceSets {
+    // Integration tests live in src/integrationTest.
+    test.java.srcDir 'src/integrationTests/java'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

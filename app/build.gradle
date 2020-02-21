@@ -69,6 +69,8 @@ dependencies {
     implementation project(Modules.navigation)
     implementation project(Modules.di)
     implementation project(Modules.domain)
+    implementation project(Modules.domainImple)
+    implementation project(Modules.domainNetworkImple)
 
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag

@@ -1,0 +1,42 @@
+import com.shamlu.app.android.buildsrc.Deps
+import com.shamlu.app.android.buildsrc.Versions
+import com.shamlu.app.android.buildsrc.Modules
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion Versions.vSdkCompile
+    defaultConfig {
+        minSdkVersion Versions.vSdkMin
+        targetSdkVersion Versions.vSdkTarget
+        versionCode Versions.vVersionCode
+        versionName Versions.vVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(":domain")
+
+    testImplementation Deps.depRetrofitAdapterRxJava2
+    testImplementation Deps.depRetrofit
+    testImplementation Deps.depTestJunit
+    androidTestImplementation Deps.depTestRunner
+    androidTestImplementation Deps.depTestEspressoCore
+    implementation Deps.depSupportAnnotation
+}

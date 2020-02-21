@@ -1,2 +1,2 @@
-include ':app', ':buildSrc', ':common', ':navigation', ':di', ':domain'
+include ':app', ':buildSrc', ':common', ':navigation', ':di', ':domain', ':domain-network-impl', ':data-network', ':domain-impl', ':data-database', ':data-network-mock'
 rootProject.name='Spotify'
