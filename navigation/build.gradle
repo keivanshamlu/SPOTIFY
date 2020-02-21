@@ -1,0 +1,9 @@
+import com.shamlu.app.android.buildsrc.AndroidLibraries
+apply plugin: 'com.android.library'
+apply from: '../modules_common.gradle'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+dependencies {
+    implementation AndroidLibraries.navigation
+    implementation AndroidLibraries.navigationFrag
+}

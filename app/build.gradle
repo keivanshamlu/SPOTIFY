@@ -66,6 +66,7 @@ dependencies {
 
     // COMMON
     implementation project(Modules.common)
+    implementation project(Modules.navigation)
 
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag

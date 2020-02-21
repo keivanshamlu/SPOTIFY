@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_bus_main"
+    >
+<!--    app:startDestination="@id/fragment_bus_main"-->
+
+
+    <!-- Bus Main Fragment -->
+<!--    <fragment android:id="@+id/fragment_bus_main"-->
+<!--        android:name="com.mydigipay.bus.FragmentMainBus"-->
+<!--        android:label="bus">-->
+
+<!--         &lt;!&ndash;Go to Bus Destination Fragment &ndash;&gt;-->
+<!--        <action android:id="@+id/action_busMainFragment_to_busDestinationFragment"-->
+<!--            app:destination="@id/busDestinationFragment">-->
+<!--            &lt;!&ndash;<argument android:name="login" app:argType="string"/>&ndash;&gt;-->
+<!--        </action>-->
+
+<!--    </fragment>-->
+
+<!--    &lt;!&ndash; Bus Destination Fragment &ndash;&gt;-->
+<!--    <fragment android:id="@+id/busDestinationFragment"-->
+<!--        android:name="com.mydigipay.bus.FragmentBusDestination"-->
+<!--        android:label="Bus Destination">-->
+<!--    </fragment>-->
+
+</navigation>
