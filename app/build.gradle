@@ -1,8 +1,18 @@
+import com.shamlu.app.android.buildsrc.ApplicationId
+import com.shamlu.app.android.buildsrc.Deps
+import com.shamlu.app.android.buildsrc.Modules
+import com.shamlu.app.android.buildsrc.AndroidLibraries
+import com.shamlu.app.android.buildsrc.Libraries
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -15,6 +25,19 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidExtensions {
+        experimental = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,10 +49,28 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation Deps.depSupportAppCompat
+    implementation Deps.depSupportAnnotation
+    implementation Deps.depConstraintLayout
+    implementation Deps.depSupportDesign
+    implementation Deps.depRecyclerView
+
+    implementation Deps.depOkHttp
+    implementation Deps.depOkHttpInterceptor
+    implementation Deps.depRetrofitAdapterRxJava2
+    implementation Deps.depRetrofitConvertorGson
+    implementation Deps.depRetrofitConvertorScalar
+
+
+    implementation AndroidLibraries.navigation
+    implementation AndroidLibraries.navigationFrag
+    implementation AndroidLibraries.coreKtx
+
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation Libraries.daggerDaggerAndroid
+    implementation Libraries.daggerDaggerAndroidSupport
+    kapt Libraries.daggerDaggerAndroidProcessor
+
 }
