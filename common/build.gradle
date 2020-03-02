@@ -4,13 +4,14 @@ import com.shamlu.app.android.buildsrc.Libraries
 import com.shamlu.app.android.buildsrc.Deps
 apply plugin: 'com.android.library'
 apply from: '../modules_common.gradle'
-
+apply plugin: 'kotlin-kapt'
 dependencies {
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
-//    implementation project(Modules.navigation)
+    implementation project(Modules.navigation)
     implementation Libraries.koin
     implementation Deps.depConstraintLayout
+    implementation project(Modules.di)
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 }

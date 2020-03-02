@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain-impl" />
             <option value="$PROJECT_DIR$/domain-network-impl" />
+            <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>

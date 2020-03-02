@@ -1,0 +1,34 @@
+import com.shamlu.app.android.buildsrc.AndroidLibraries
+import com.shamlu.app.android.buildsrc.Deps
+import com.shamlu.app.android.buildsrc.KotlinLibraries
+import com.shamlu.app.android.buildsrc.Libraries
+import com.shamlu.app.android.buildsrc.Modules
+import com.shamlu.app.android.buildsrc.TestLibraries
+
+
+apply plugin: 'com.android.library'
+apply from: '../android_feature_dependencies.gradle'
+apply plugin: 'kotlin-kapt'
+
+android {
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+    dataBinding {
+        enabled true
+    }
+    testOptions {
+        animationsDisabled = true
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.depKotlin
+    implementation project(Modules.common)
+    implementation project(Modules.di)
+    implementation AndroidLibraries.lifecycleLiveData
+    implementation project(Modules.navigation)
+    implementation KotlinLibraries.kotlin
+    implementation KotlinLibraries.kotlinCoroutineCore
+    implementation AndroidLibraries.kotlinCoroutineAndroid
+}

@@ -30,7 +30,7 @@ object Versions {
     const val appCompat = "1.1.0-rc01"
     const val coreKtx = "1.1.0"
     const val constraintLayout = "1.1.3"
-    const val lifecycle = "2.1.0"
+    const val lifecycle = "2.2.0"
     const val recyclerview = "1.0.0"
     const val safeArgs = "2.1.0"
     const val gson = "2.8.5"
@@ -209,4 +209,5 @@ object Modules {
     const val domain = ":domain"
     const val domainImple = ":domain-impl"
     const val domainNetworkImple = ":domain-network-impl"
+    const val login = ":login"
 }

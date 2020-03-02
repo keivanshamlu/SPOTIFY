@@ -15,6 +15,7 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-kapt'
 
 apply from: '../modules_common.gradle'
+apply from: '../android_core_dependencies.gradle'
 
 android {
     compileSdkVersion 29
@@ -52,6 +53,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    // KOIN
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
+
     implementation Deps.depSupportAppCompat
     implementation Deps.depSupportAnnotation
     implementation Deps.depConstraintLayout
@@ -64,6 +69,17 @@ dependencies {
     implementation Deps.depRetrofitConvertorGson
     implementation Deps.depRetrofitConvertorScalar
 
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.coreKtx
+    implementation AndroidLibraries.constraintLayout
+    implementation AndroidLibraries.lifecycleViewModel
+    implementation AndroidLibraries.lifecycleLiveData
+    implementation AndroidLibraries.lifecycleExtensions
+    implementation AndroidLibraries.recyclerView
+    implementation AndroidLibraries.navigation
+    implementation AndroidLibraries.navigationFrag
+    implementation AndroidLibraries.paging
+
     // COMMON
     implementation project(Modules.common)
     implementation project(Modules.navigation)
@@ -71,7 +87,10 @@ dependencies {
     implementation project(Modules.domain)
     implementation project(Modules.domainImple)
     implementation project(Modules.domainNetworkImple)
+    implementation project(Modules.login)
 
+
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha04'
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
     implementation AndroidLibraries.coreKtx

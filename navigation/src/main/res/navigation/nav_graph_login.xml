@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_bus_main"
+    app:startDestination="@id/fragment_bus_main"
+    >
+
+
+    <fragment android:id="@+id/fragment_bus_main"
+        android:name="com.shamlu.login.ui.FragmentLogin"
+        android:label="bus">
+
+
+    </fragment>
+
+</navigation>

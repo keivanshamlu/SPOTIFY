@@ -1,12 +1,14 @@
 import com.shamlu.app.android.buildsrc.Deps
-import com.shamlu.app.android.buildsrc.Libraries
-apply plugin: 'com.android.library'
-apply from: '../modules_common.gradle'
-apply plugin: 'kotlin-kapt'
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.depKotlin
-
-
+    api Deps.depRxjava2
+    api Deps.depJavax
 }
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
