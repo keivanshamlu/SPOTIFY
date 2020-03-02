@@ -43,7 +43,8 @@ object Versions {
     const val retrofitGson = "2.4.0"
     const val okHttp = "3.12.1"
     const val glide = "4.9.0"
-
+    const val spotifyAuth = "1.1.0"
+    const val browser = "1.0.0"
 
     const val androidTestRunner = "1.3.0-alpha02"
     const val espressoCore = "3.1.0"
@@ -93,6 +94,10 @@ object Deps {
     const val depRetrofitConvertorGson = "com.squareup.retrofit2:converter-gson:${Versions.vRetrofit}"
     const val depRetrofitConvertorScalar = "com.squareup.retrofit2:converter-scalars:${Versions.vRetrofit}"
     const val depRetrofitAdapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.vRetrofit}"
+
+    //SPOTIFY
+    const val spotifyAuth = "com.spotify.android:auth:${Versions.spotifyAuth}"
+    const val browser = "androidx.browser:browser:${Versions.browser}"
 
     const val depDaggerCompiler = "com.google.dagger:dagger-compiler:2.16"
     const val depDagger = "com.google.dagger:dagger:2.16"
@@ -175,6 +180,7 @@ object AndroidLibraries {
     const val navigationFrag = "androidx.navigation:navigation-fragment-ktx:${Versions.vNavigation}"
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:2.1.0"
+    const val lifecycleCommon = "androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha04"
 
 }
 

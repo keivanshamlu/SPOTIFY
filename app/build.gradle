@@ -48,7 +48,12 @@ android {
         }
     }
 }
-
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -68,6 +73,8 @@ dependencies {
     implementation Deps.depRetrofitAdapterRxJava2
     implementation Deps.depRetrofitConvertorGson
     implementation Deps.depRetrofitConvertorScalar
+    implementation Deps.spotifyAuth
+    implementation Deps.browser
 
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.coreKtx
@@ -75,6 +82,7 @@ dependencies {
     implementation AndroidLibraries.lifecycleViewModel
     implementation AndroidLibraries.lifecycleLiveData
     implementation AndroidLibraries.lifecycleExtensions
+    implementation AndroidLibraries.lifecycleCommon
     implementation AndroidLibraries.recyclerView
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
@@ -90,7 +98,7 @@ dependencies {
     implementation project(Modules.login)
 
 
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha04'
+
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
     implementation AndroidLibraries.coreKtx
