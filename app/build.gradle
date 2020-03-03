@@ -40,11 +40,30 @@ android {
     androidExtensions {
         experimental = true
     }
-
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            debuggable false
+            shrinkResources true
+            multiDexEnabled true
+            ext.enableCrashlytics = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'boolean', 'BUILD_TYPE_DEBUG', 'false'
+            buildConfigField 'boolean', 'BUILD_TYPE_RELEASE', 'true'
+
+
+            buildConfigField 'String', 'CLIENT_ID', '\"2b9fb882a79f43a39e3654e36b8fd957\"'
+            buildConfigField 'String', 'REDIRECT_URI', '\"spotifybykeivan://returnafterlogin\"'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'boolean', 'BUILD_TYPE_DEBUG', 'true'
+            buildConfigField 'boolean', 'BUILD_TYPE_RELEASE', 'false'
+
+            buildConfigField 'String', 'CLIENT_ID', '\"2b9fb882a79f43a39e3654e36b8fd957\"'
+            buildConfigField 'String', 'REDIRECT_URI', '\"spotifybykeivan://returnafterlogin\"'
         }
     }
 }
