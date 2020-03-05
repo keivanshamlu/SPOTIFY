@@ -13,5 +13,6 @@ dependencies {
     implementation Libraries.koin
     implementation Deps.depConstraintLayout
     implementation project(Modules.di)
+    implementation project(Modules.spotifyAppRemote)
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 }

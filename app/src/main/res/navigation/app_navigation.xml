@@ -16,7 +16,9 @@
         android:label="Home"
         >
 
-    </fragment>
+        <action android:id="@+id/fragment_main_to_fragment_login"
+             app:destination="@+id/nav_graph_login"/>
 
+    </fragment>
 
 </navigation>

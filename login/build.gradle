@@ -31,4 +31,6 @@ dependencies {
     implementation KotlinLibraries.kotlin
     implementation KotlinLibraries.kotlinCoroutineCore
     implementation AndroidLibraries.kotlinCoroutineAndroid
+
+    implementation Deps.spotifyAuth
 }

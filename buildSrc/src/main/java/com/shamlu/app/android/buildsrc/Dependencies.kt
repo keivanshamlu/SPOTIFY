@@ -216,4 +216,5 @@ object Modules {
     const val domainImple = ":domain-impl"
     const val domainNetworkImple = ":domain-network-impl"
     const val login = ":login"
+    const val spotifyAppRemote = ":spotify-app-remote"
 }

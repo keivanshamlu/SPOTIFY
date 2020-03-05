@@ -94,6 +94,7 @@ dependencies {
     implementation Deps.depRetrofitConvertorScalar
     implementation Deps.spotifyAuth
     implementation Deps.browser
+    implementation Deps.depGson
 
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.coreKtx
@@ -115,6 +116,7 @@ dependencies {
     implementation project(Modules.domainImple)
     implementation project(Modules.domainNetworkImple)
     implementation project(Modules.login)
+    implementation project(Modules.spotifyAppRemote)
 
 
 

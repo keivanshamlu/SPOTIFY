@@ -13,6 +13,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/text_view_main_fragment_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -20,6 +21,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fragment_main"/>
+
+        <Button
+            android:id="@+id/goToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="goto login page"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_main_fragment_title"
+            android:onClick="@{() -> viewModel.navigateToLoginFragment()}"
+            />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
