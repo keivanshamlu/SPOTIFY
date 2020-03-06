@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/spotify-app-remote" />
+            <option value="$PROJECT_DIR$/spotify-player" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

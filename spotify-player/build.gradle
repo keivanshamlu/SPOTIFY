@@ -1,6 +1,7 @@
 import com.shamlu.app.android.buildsrc.AndroidLibraries
 import com.shamlu.app.android.buildsrc.Deps
 import com.shamlu.app.android.buildsrc.KotlinLibraries
+import com.shamlu.app.android.buildsrc.Libraries
 import com.shamlu.app.android.buildsrc.Modules
 
 
@@ -26,9 +27,11 @@ dependencies {
     implementation project(Modules.di)
     implementation AndroidLibraries.lifecycleLiveData
     implementation project(Modules.navigation)
+    implementation project(Modules.domain)
     implementation KotlinLibraries.kotlin
     implementation KotlinLibraries.kotlinCoroutineCore
     implementation AndroidLibraries.kotlinCoroutineAndroid
-
-    implementation Deps.spotifyAuth
-}
+    implementation AndroidLibraries.palette
+    implementation Deps.depGson
+    implementation Libraries.glide
+    implementation project(Modules.spotifyAppRemote)}

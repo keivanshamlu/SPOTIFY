@@ -7,6 +7,6 @@ class ViewModelMain: ViewModelBase() {
 
     fun navigateToLoginFragment(){
 
-        navigate(FragmentMainDirections.fragmentMainToFragmentLogin())
+        navigate(FragmentMainDirections.fragmentMainToDialogSpotifyMusicPlayer())
     }
 }

@@ -9,6 +9,7 @@ dependencies {
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
+    implementation AndroidLibraries.palette
     implementation project(Modules.navigation)
     implementation Libraries.koin
     implementation Deps.depConstraintLayout

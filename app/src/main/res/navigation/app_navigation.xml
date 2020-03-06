@@ -7,7 +7,7 @@
     >
 
     <include app:graph="@navigation/nav_graph_login" />
-
+    <include app:graph="@navigation/nav_graph_spotify_music_player" />
 
 
     <fragment
@@ -19,6 +19,8 @@
         <action android:id="@+id/fragment_main_to_fragment_login"
              app:destination="@+id/nav_graph_login"/>
 
+        <action android:id="@+id/fragment_main_to_dialog_spotify_music_player"
+            app:destination="@+id/nav_graph_spotify_music_player"/>
     </fragment>
 
 </navigation>

@@ -24,6 +24,7 @@ object Versions {
     const val vPlayServices = "17.0.0"
     const val vNavigation = "2.1.0"
     const val vPlayAuth = "17.3.0"
+    const val palette = "1.0.0"
 
     const val gradle = "3.5.0"
     const val coroutines = "1.3.1"
@@ -181,6 +182,7 @@ object AndroidLibraries {
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:2.1.0"
     const val lifecycleCommon = "androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha04"
+    const val palette = "androidx.palette:palette:${Versions.palette}"
 
 }
 
@@ -217,4 +219,5 @@ object Modules {
     const val domainNetworkImple = ":domain-network-impl"
     const val login = ":login"
     const val spotifyAppRemote = ":spotify-app-remote"
+    const val spotifyPlayer = ":spotify-player"
 }

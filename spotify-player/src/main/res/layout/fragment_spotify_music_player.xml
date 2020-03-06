@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/bind">
+
+        <data>
+            <variable
+                name="viewModel"
+                type="com.shamlu.spotify_player.ui.ViewModelSpotifyMusicPlayer" />
+        </data>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/cordinator_layout"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            android:layout_width="match_parent">
+
+
+            <include
+                android:id="@+id/included_view_main_content"
+                bind:viewModel="@{viewModel}"
+                layout="@layout/fragment_spotify_main_content" />
+
+            <!-- include bottom sheet -->
+            <include
+                bind:viewModel="@{viewModel}"
+                android:id="@+id/included_view_bottom_sheet_music_player_content"
+                layout="@layout/bottom_sheet_spotify_music_player"
+                />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

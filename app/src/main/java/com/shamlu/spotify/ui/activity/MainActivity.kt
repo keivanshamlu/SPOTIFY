@@ -1,13 +1,21 @@
 package com.shamlu.spotify.ui.activity
 
 import android.content.Intent
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.KITKAT
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.*
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import com.shamlu.common.managers.SessionManager
 import com.shamlu.common.managers.SpotifyConnectionsManager
+import com.shamlu.common.recources.apotify.SpotifyConnectionsResource
 import com.shamlu.login.ui.REQUEST_CODE_LOGIN_SPOTIFY
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
@@ -27,6 +35,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.shamlu.spotify.R.layout.activity_main)
 
+        if (SDK_INT >= KITKAT) {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+        }
+
         observeManagers()
     }
 
@@ -34,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 
         connectionsManager.spotifyConnection.observe(this , Observer {
 
+            it.status.takeIf { it == SpotifyConnectionsResource.Status.CONNECTED }.apply {
+
+//                mSpotifyAppRemote?.getPlayerApi()?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL")
+            }
 
         })
     }
@@ -84,20 +103,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp() =
         findNavController(this, com.shamlu.spotify.R.id.container_fragment).navigateUp()
-
-    private fun connected() {
-        // Play a playlist
-        mSpotifyAppRemote?.getPlayerApi()?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL")
-        // Subscribe to PlayerState
-        mSpotifyAppRemote?.getPlayerApi()
-            ?.subscribeToPlayerState()
-            ?.setEventCallback { playerState ->
-                val track = playerState.track
-                if (track != null) {
-                    Log.d("MainActivity", track.name + " by " + track.artist.name)
-                }
-            }
-    }
 
 }
 

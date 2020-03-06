@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_spotify_music_player"
+    app:startDestination="@id/dialog_spotify_music_player">
+
+
+    <fragment
+        android:id="@+id/dialog_spotify_music_player"
+        android:name="com.shamlu.spotify_player.ui.FragmentSpotifyMusicPlayer"
+        android:label="music player">
+
+    </fragment>
+</navigation>

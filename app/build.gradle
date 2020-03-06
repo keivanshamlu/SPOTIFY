@@ -117,7 +117,7 @@ dependencies {
     implementation project(Modules.domainNetworkImple)
     implementation project(Modules.login)
     implementation project(Modules.spotifyAppRemote)
-
+    implementation project(Modules.spotifyPlayer)
 
 
     implementation AndroidLibraries.navigation

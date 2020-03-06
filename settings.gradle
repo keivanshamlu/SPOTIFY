@@ -1,2 +1,2 @@
-include ':app', ':buildSrc', ':common', ':navigation', ':di', ':domain', ':domain-network-impl', ':data-network', ':domain-impl', ':data-database', ':data-network-mock', ':login', ':spotify-app-remote'
+include ':app', ':buildSrc', ':common', ':navigation', ':di', ':domain', ':domain-network-impl', ':data-network', ':domain-impl', ':data-database', ':data-network-mock', ':login', ':spotify-app-remote', ':spotify-player'
 rootProject.name='Spotify'
