@@ -10,36 +10,137 @@
             type="com.shamlu.spotify_player.ui.ViewModelSpotifyMusicPlayer" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/view_bottom_sheet_back_ground"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:behavior_hideable="false"
-    app:behavior_peekHeight="108dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-    <TextView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/text_view_track_name"
-        binding:trackName="@{viewModel.playerDetails.songName}"
-        binding:artistName="@{viewModel.playerDetails.artistName}"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_bottom_sheet_back_ground"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:textColor="@color/black" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="98dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        binding:bottomSheetState="@{viewModel.bottomSheetState}"
+        binding:playerState="@{viewModel.playerDetails}">
 
-    <ImageView
-        binding:imageBackgroundBitmap="@{viewModel.playerDetails.image}"
-        android:scaleType="centerInside"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="200dp"
-        android:layout_height="200dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_view_expanded_song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@{viewModel.playerDetails.songName}"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                binding:bottomSheetStateExpanded="@{viewModel.bottomSheetState}"
+                binding:playerStateExpanded="@{viewModel.playerDetails}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@{viewModel.playerDetails.artistName}"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                binding:bottomSheetStateExpanded="@{viewModel.bottomSheetState}"
+                binding:playerStateExpanded="@{viewModel.playerDetails}" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            binding:offsetMarginTop="@{viewModel.bottomSheetState.offset}">
+
+            <TextView
+                android:id="@+id/text_view_track_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:lines="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_18_dp"
+                binding:artistName="@{viewModel.playerDetails.artistName}"
+                binding:bottomSheetState="@{viewModel.bottomSheetState}"
+                binding:playerState="@{viewModel.playerDetails}"
+                binding:trackName="@{viewModel.playerDetails.songName}" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ic_swipe_up"
+                binding:bottomSheetStateForImageview="@{viewModel.bottomSheetState.offset}"
+                binding:playerState="@{viewModel.playerDetails}" />
+
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_play_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            binding:imageBackgroundBitmap="@{viewModel.playerDetails.image}" />
+
+        <RelativeLayout
+            android:id="@+id/view_play_pause_background"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="90dp"
+            android:background="@drawable/shape_circle"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_play_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_play_buttons" />
+
+        <RelativeLayout
+            android:id="@+id/view_next_track_background"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/shape_circle"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_play_buttons"
+            app:layout_constraintStart_toEndOf="@+id/view_play_pause_background"
+            app:layout_constraintTop_toTopOf="@+id/guideline_play_buttons" />
+
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/shape_circle"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_play_buttons"
+            app:layout_constraintEnd_toStartOf="@+id/view_play_pause_background"
+            app:layout_constraintTop_toTopOf="@+id/guideline_play_buttons" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

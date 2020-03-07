@@ -9,6 +9,7 @@ import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -87,13 +88,29 @@ fun TextView.setStyleText(targetText: String, styleText: List<StyleText>) {
         append(targetText.substring(lastIndex))
     }
 }
-fun TextView.setToColorsWithOffset(colorFrom : Int, colorTo : Int, offset : Float){
+fun TextView.setTextColorsWithOffset(colorFrom : Int, colorTo : Int, offset : Float){
     this.setTextColor(
         interpolateColor(
             offset,
             colorFrom, colorTo
         )
     )
+}
+
+fun View.setAlphaWithOffsetToGone(offset: Float){
+
+    this.alpha = 1 - offset
+}
+fun View.setAlphaWithOffsetToVisible(offset: Float){
+
+    this.alpha =  offset
+}
+
+fun TextView.setToSizeWithOffset(sizeFrom : Float, sizeTo : Float, offset : Float){
+
+    var finalSize = sizeFrom + offset * (sizeTo.minus(sizeFrom))
+
+    this.setTextSize(TypedValue.COMPLEX_UNIT_PX , finalSize)
 }
 
 

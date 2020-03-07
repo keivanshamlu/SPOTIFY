@@ -24,8 +24,6 @@ class FragmentSpotifyMusicPlayer : BaseFragment() {
     override fun getViewModel(): ViewModelBase = viewModel
     private lateinit var binding: FragmentSpotifyMusicPlayerBinding
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,51 +49,17 @@ class FragmentSpotifyMusicPlayer : BaseFragment() {
 
 
         })
-
-
-
     }
-
-
-
-
 
     private fun setupBottomSheet() {
 
-        var behavior =
-            BottomSheetBehavior.from(binding.includedViewBottomSheetMusicPlayerContent.viewBottomSheetBackGround)
-        val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+        val behavior = BottomSheetBehavior.from(binding.includedViewBottomSheetMusicPlayerContent.viewBottomSheetBackGround)
+        behavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
 
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                // Do something for new state
-                when (newState) {
-                    BottomSheetBehavior.STATE_DRAGGING -> {
-                    }
-                    BottomSheetBehavior.STATE_SETTLING -> {
-                    }
-                    else -> {
-                    }
-                }
+            override fun onStateChanged(bottomSheet: View, newState: Int) = viewModel.setBottomSheetState(newState)
 
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-
-                bottomSheet.setToColorsWithOffset(
-                    ContextCompat.getColor(context!!, R.color.white),
-                    viewModel.playerDetails.value?.variant?: ContextCompat.getColor(context!!, R.color.white),
-                    slideOffset
-                )
-
-                binding.includedViewBottomSheetMusicPlayerContent.textViewTrackName.setToColorsWithOffset(
-                    ContextCompat.getColor(context!!, R.color.black),
-                    viewModel.playerDetails.value?.textColor?:ContextCompat.getColor(context!!, R.color.black),
-                    slideOffset
-                )
-
-            }
-        }
-        behavior.setBottomSheetCallback(bottomSheetCallback)
+            override fun onSlide(bottomSheet: View, slideOffset: Float) = viewModel.setBottomSheetOffset(slideOffset)
+        })
 
 
     }

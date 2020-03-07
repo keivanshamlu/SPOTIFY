@@ -1,17 +1,21 @@
 package com.shamlu.common.extentions
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
-import com.shamlu.common.R
 import com.shamlu.common.util.ErrorModel
 import com.shamlu.common.util.Event
+import android.view.ViewGroup
+
+
 
 /**
  * Transforms static java function SnackBar.make() to an extension function on View.
@@ -21,9 +25,9 @@ fun Fragment.showSnackBar(snackBarText: String, timeLength: Int, isNetworkConnec
             .apply {
 
                 if (isNetworkConnection) {
-                    setAction(getString(R.string.snack_bar_settings)) { context.startDeviceSettings() }
-                    setActionTextColor(ContextCompat.getColor(context, R.color.black))
-                    setText(getString(R.string.error_network_check))
+                    setAction(getString(com.shamlu.common.R.string.snack_bar_settings)) { context.startDeviceSettings() }
+                    setActionTextColor(ContextCompat.getColor(context, com.shamlu.common.R.color.black))
+                    setText(getString(com.shamlu.common.R.string.error_network_check))
                 }
             }.show() }
 }
@@ -53,7 +57,31 @@ fun View.setToColorsWithOffset(colorFrom : Int , colorTo : Int , offset : Float)
         )
     )
 }
+fun View.setMarginTop(marginTop : Int , offset: Float){
 
+
+    setMargin(this , this.layoutParams , marginTop*offset)
+}
+fun ImageView.setToColorFilterWithOffset(colorFrom : Int, colorTo : Int, offset : Float){
+    this.background.setColorFilter(
+        interpolateColor(
+            offset,
+            colorFrom, colorTo
+        ), PorterDuff.Mode.SRC_ATOP
+    )
+}
+
+fun setMargin( view: View , params: ViewGroup.LayoutParams, dp: Float) {
+
+    val scale = view.context.resources.displayMetrics.density
+    // convert the DP into pixel
+    val pixel = (dp * scale + 0.5f).toInt()
+
+    val s = params as ViewGroup.MarginLayoutParams
+    s.topMargin = pixel
+
+    view.setLayoutParams(params)
+}
 
 // Helper method to interpolate colors
 private fun interpolateColor(fraction: Float, startValue: Int, endValue: Int): Int {
