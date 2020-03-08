@@ -38,11 +38,11 @@ class ViewModelSpotifyMusicPlayer(private val connectionsManager: SpotifyConnect
     val playerLiveData = Transformations.map(connectionsManager.spotifyConnection){
         it.takeIf { it.status == SpotifyConnectionsResource.Status.CONNECTED }
             ?.let { connectionResource ->
-
+                connectionResource.data?.playerApi?.skipNext()
+                connectionResource.data?.playerApi?.playerState
                 connectionResource.data?.playerApi?.subscribeToPlayerState()?.setEventCallback { playerState ->
 
                     _playerState.value = playerState
-
                         playerState.track?.let{
                             connectionResource.data?.imagesApi?.getImage(it.imageUri)?.setResultCallback { bitmap ->
                                 bitmap?.createPalleteSync()?.getLightVibrantColor(Color.parseColor("#FFFFFF"))
@@ -53,6 +53,47 @@ class ViewModelSpotifyMusicPlayer(private val connectionsManager: SpotifyConnect
                  }
 
             }
+    }
+
+    fun togglePlayPause(){
+
+        connectionsManager.spotifyConnection.value.takeIf { it?.status == SpotifyConnectionsResource.Status.CONNECTED }.apply {
+
+            this?.data?.let {
+
+                if(playerState.value?.isPaused ?:false){
+
+                    it.playerApi.resume()
+                }else{
+
+                    it.playerApi.pause()
+                }
+            }
+        }
+
+    }
+
+    fun playNext(){
+
+        connectionsManager.spotifyConnection.value.takeIf { it?.status == SpotifyConnectionsResource.Status.CONNECTED }.apply {
+
+            this?.data?.let {
+                    it.playerApi.skipNext()
+
+            }
+        }
+
+    }
+    fun playPrevious(){
+
+        connectionsManager.spotifyConnection.value.takeIf { it?.status == SpotifyConnectionsResource.Status.CONNECTED }.apply {
+
+            this?.data?.let {
+                    it.playerApi.skipPrevious()
+
+            }
+        }
+
     }
 
     fun setBottomSheetState(state : Int){
@@ -69,13 +110,15 @@ class ViewModelSpotifyMusicPlayer(private val connectionsManager: SpotifyConnect
 
     private fun handleSong(track : Track , bitmap : Bitmap){
 
+        val variant = bitmap.createPalleteSync().getDominantColor(Color.parseColor("#FFFFFF"))
+        val mutedDark = bitmap.createPalleteSync().getDarkMutedColor(Color.parseColor("#FFFFFF"))
+        val dark = bitmap.createPalleteSync().getDarkVibrantColor(Color.parseColor("#FFFFFF"))
+        val mutedlight = bitmap.createPalleteSync().getDarkMutedColor(Color.parseColor("#FFFFFF"))
+
+        val buttonsAndTextsColor = if(mutedDark!= 1 && mutedDark != variant) mutedDark else if(dark!= 1 && dark != variant)dark else mutedlight
         _playerDetails.value = PlayerDetails(
-            bitmap.createPalleteSync().getDominantColor(Color.parseColor("#FFFFFF")),
-            bitmap.createPalleteSync().getMutedColor(Color.parseColor("#FFFFFF")),
-            bitmap.createPalleteSync().getLightVibrantColor(Color.parseColor("#FFFFFF")),
-            bitmap.createPalleteSync().getLightMutedColor(Color.parseColor("#FFFFFF")),
-            bitmap.createPalleteSync().getDarkVibrantColor(Color.parseColor("#FFFFFF")),
-            bitmap.createPalleteSync().getDarkMutedColor(Color.parseColor("#000000")),
+            variant,
+            buttonsAndTextsColor,
             track.artist.name,
             track.name,
             bitmap

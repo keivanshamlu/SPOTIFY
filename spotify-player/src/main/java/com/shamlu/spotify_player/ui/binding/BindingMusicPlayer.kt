@@ -1,6 +1,7 @@
 package com.shamlu.spotify_player.ui.binding
 
 import android.graphics.Bitmap
+import android.graphics.PorterDuff
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +13,7 @@ import com.shamlu.app.android.domain.model.player.BottomSheetState
 import com.shamlu.common.extentions.*
 import com.shamlu.spotify_player.R
 import com.shamlu.spotify_player.ui.dataState.PlayerDetails
+import com.spotify.protocol.types.PlayerState
 
 @BindingAdapter("binding:trackName" , "binding:artistName" , requireAll = true)
 fun setTrackNames(textView: TextView, trackName:String? , artistName : String?) {
@@ -49,17 +51,19 @@ fun settextViewBottomSheetAndPlayerState(textView: TextView, bottomSheetState: B
 @BindingAdapter("binding:bottomSheetStateExpanded" , "binding:playerStateExpanded" )
 fun settextViewExpandedBottomSheetAndPlayerState(textView: TextView, bottomSheetState: BottomSheetState? , playerState: PlayerDetails?) {
 
-    bottomSheetState?.offset?.let {
-        val newOffset =  bottomSheetState.offset!!.minus(0.4)
+    val offset = bottomSheetState?.offset ?: 0f
 
-        if(it > 0 ){
-            textView.setAlphaWithOffsetToVisible(newOffset.toFloat())
-            textView.setTextColorsWithOffset(ContextCompat.getColor(textView.context , R.color.white) , playerState?.textColor ?:ContextCompat.getColor(textView.context , R.color.black),
-                bottomSheetState.offset?:0f)
+        if(offset.minus(0.4) > 0 ){
+            textView.setAlphaWithOffsetToVisible(offset)
+            textView.setTextColorsWithOffset(ContextCompat.getColor(textView.context , R.color.white) , playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(textView.context , R.color.black), offset)
         }
         else textView.setAlphaWithOffsetToVisible(0f)
 
     }
+@BindingAdapter("binding:playerStateForIcons" )
+fun setPlayerStateForIcons(imageView: ImageView , playerState: PlayerDetails?) {
+
+    playerState?.let {imageView.background.setColorFilter(playerState.variant , PorterDuff.Mode.SRC_ATOP) }
 
 
 }
@@ -70,12 +74,28 @@ fun setBottomSheetOffset(imageView: ImageView , offset: Float , playerState: Pla
 
     imageView.setRotation(offset * 180)
     imageView.setToColorFilterWithOffset(
-        ContextCompat.getColor(imageView.context, R.color.black),
-        playerState?.textColor?:ContextCompat.getColor(imageView.context, R.color.black),
+        ContextCompat.getColor(
+            imageView.context,
+            R.color.black
+        ),
+        playerState?.buttonsAndTextsColor ?: ContextCompat.getColor(imageView.context, R.color.black),
         offset
     )
 
 }
+
+@BindingAdapter("binding:playPauseData" , "binding:playPauseDetails")
+fun setPlayPauseData(imageView: ImageView , playerState: PlayerState? , playerDetails: PlayerDetails?){
+
+    playerState?.let {
+
+        imageView.background = if(playerState.isPaused)ContextCompat.getDrawable(imageView.context , R.drawable.ic_play_button) else ContextCompat.getDrawable(imageView.context , R.drawable.ic_pause_button)
+        imageView.background.setColorFilter(playerDetails?.variant ?:ContextCompat.getColor(imageView.context, R.color.black), PorterDuff.Mode.SRC_ATOP)
+
+    }
+}
+
+
 
 @BindingAdapter("binding:offsetMarginTop")
 fun setBottomSheetOffset(view: View , offset: Float ){
@@ -83,3 +103,8 @@ fun setBottomSheetOffset(view: View , offset: Float ){
 
     view.setMarginTop(20 , offset)
 }
+
+@BindingAdapter("bindin:spotifyPlayerButtonsColors")
+fun setSpotifyPlayeButtonsColors(view : View , playerState: PlayerDetails?){
+
+    view.background.setColorFilter(playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(view.context, R.color.black), PorterDuff.Mode.SRC_ATOP)}

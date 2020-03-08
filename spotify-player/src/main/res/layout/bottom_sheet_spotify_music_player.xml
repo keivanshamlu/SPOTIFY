@@ -114,9 +114,11 @@
             binding:imageBackgroundBitmap="@{viewModel.playerDetails.image}" />
 
         <RelativeLayout
+            android:onClick="@{() -> viewModel.togglePlayPause()}"
             android:id="@+id/view_play_pause_background"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            binding:spotifyPlayerButtonsColors="@{viewModel.playerDetails}"
             android:layout_marginBottom="90dp"
             android:background="@drawable/shape_circle"
             app:layout_constraintBottom_toBottomOf="@id/guideline_play_buttons"
@@ -124,23 +126,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline_play_buttons" />
 
+        <ImageView
+            binding:playPauseData="@{viewModel.playerState}"
+            binding:playPauseDetails="@{viewModel.playerDetails}"
+            binding:playerStateForIcons="@{viewModel.playerDetails}"
+            android:background="@drawable/ic_play_button"
+            app:layout_constraintTop_toTopOf="@+id/view_play_pause_background"
+            app:layout_constraintBottom_toBottomOf="@+id/view_play_pause_background"
+            app:layout_constraintStart_toStartOf="@+id/view_play_pause_background"
+            app:layout_constraintEnd_toEndOf="@+id/view_play_pause_background"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
         <RelativeLayout
+            android:onClick="@{() -> viewModel.playNext()}"
+            binding:spotifyPlayerButtonsColors="@{viewModel.playerDetails}"
             android:id="@+id/view_next_track_background"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="30dp"
             android:background="@drawable/shape_circle"
             app:layout_constraintBottom_toBottomOf="@id/guideline_play_buttons"
             app:layout_constraintStart_toEndOf="@+id/view_play_pause_background"
             app:layout_constraintTop_toTopOf="@+id/guideline_play_buttons" />
 
+        <ImageView
+            android:background="@drawable/ic_next_track_button"
+            binding:playerStateForIcons="@{viewModel.playerDetails}"
+            app:layout_constraintTop_toTopOf="@+id/view_next_track_background"
+            app:layout_constraintBottom_toBottomOf="@+id/view_next_track_background"
+            app:layout_constraintStart_toStartOf="@+id/view_next_track_background"
+            app:layout_constraintEnd_toEndOf="@+id/view_next_track_background"
+            android:layout_width="12dp"
+            android:layout_height="12dp"/>
+
         <RelativeLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:onClick="@{() -> viewModel.playPrevious()}"
+            android:id="@+id/view_previos_track_background"
+            binding:spotifyPlayerButtonsColors="@{viewModel.playerDetails}"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/shape_circle"
             app:layout_constraintBottom_toBottomOf="@id/guideline_play_buttons"
             app:layout_constraintEnd_toStartOf="@+id/view_play_pause_background"
             app:layout_constraintTop_toTopOf="@+id/guideline_play_buttons" />
+
+        <ImageView
+            android:background="@drawable/ic_back_track_button"
+            binding:playerStateForIcons="@{viewModel.playerDetails}"
+            app:layout_constraintTop_toTopOf="@+id/view_previos_track_background"
+            app:layout_constraintBottom_toBottomOf="@+id/view_previos_track_background"
+            app:layout_constraintStart_toStartOf="@+id/view_previos_track_background"
+            app:layout_constraintEnd_toEndOf="@+id/view_previos_track_background"
+            android:layout_width="12dp"
+            android:layout_height="12dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
