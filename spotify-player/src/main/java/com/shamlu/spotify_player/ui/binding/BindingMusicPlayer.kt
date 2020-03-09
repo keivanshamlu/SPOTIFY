@@ -11,9 +11,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.shamlu.app.android.domain.model.player.BottomSheetState
 import com.shamlu.common.extentions.*
-import com.shamlu.spotify_player.R
 import com.shamlu.spotify_player.ui.dataState.PlayerDetails
 import com.spotify.protocol.types.PlayerState
+import android.graphics.drawable.BitmapDrawable
+
+
 
 @BindingAdapter("binding:trackName" , "binding:artistName" , requireAll = true)
 fun setTrackNames(textView: TextView, trackName:String? , artistName : String?) {
@@ -23,7 +25,12 @@ fun setTrackNames(textView: TextView, trackName:String? , artistName : String?) 
 
 @BindingAdapter("binding:imageBackgroundBitmap" )
 fun setImageBackgroundBitmap(imageView: ImageView, bitmap: Bitmap?) {
-    Glide.with(imageView).load(bitmap).apply(RequestOptions.circleCropTransform()).into(imageView)
+
+
+    bitmap?.let {
+        Glide.with(imageView).load(it).apply(RequestOptions.circleCropTransform()).into(imageView)
+    }
+
 }
 
 
@@ -33,8 +40,8 @@ fun setBottomSheetAndPlayerState(view: View, bottomSheetState: BottomSheetState?
     bottomSheetState?.let {
 
         view.setToColorsWithOffset(
-            ContextCompat.getColor(view.context, R.color.white),
-            playerState?.variant?: ContextCompat.getColor(view.context!!, R.color.white),
+            ContextCompat.getColor(view.context, com.shamlu.spotify_player.R.color.white),
+            playerState?.variant?: ContextCompat.getColor(view.context!!, com.shamlu.spotify_player.R.color.white),
             bottomSheetState.offset?:0f
         )
 
@@ -55,7 +62,7 @@ fun settextViewExpandedBottomSheetAndPlayerState(textView: TextView, bottomSheet
 
         if(offset.minus(0.4) > 0 ){
             textView.setAlphaWithOffsetToVisible(offset)
-            textView.setTextColorsWithOffset(ContextCompat.getColor(textView.context , R.color.white) , playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(textView.context , R.color.black), offset)
+            textView.setTextColorsWithOffset(ContextCompat.getColor(textView.context , com.shamlu.spotify_player.R.color.white) , playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(textView.context , com.shamlu.spotify_player.R.color.black), offset)
         }
         else textView.setAlphaWithOffsetToVisible(0f)
 
@@ -76,9 +83,9 @@ fun setBottomSheetOffset(imageView: ImageView , offset: Float , playerState: Pla
     imageView.setToColorFilterWithOffset(
         ContextCompat.getColor(
             imageView.context,
-            R.color.black
+            com.shamlu.spotify_player.R.color.black
         ),
-        playerState?.buttonsAndTextsColor ?: ContextCompat.getColor(imageView.context, R.color.black),
+        playerState?.buttonsAndTextsColor ?: ContextCompat.getColor(imageView.context, com.shamlu.spotify_player.R.color.black),
         offset
     )
 
@@ -89,8 +96,8 @@ fun setPlayPauseData(imageView: ImageView , playerState: PlayerState? , playerDe
 
     playerState?.let {
 
-        imageView.background = if(playerState.isPaused)ContextCompat.getDrawable(imageView.context , R.drawable.ic_play_button) else ContextCompat.getDrawable(imageView.context , R.drawable.ic_pause_button)
-        imageView.background.setColorFilter(playerDetails?.variant ?:ContextCompat.getColor(imageView.context, R.color.black), PorterDuff.Mode.SRC_ATOP)
+        imageView.background = if(playerState.isPaused)ContextCompat.getDrawable(imageView.context , com.shamlu.spotify_player.R.drawable.ic_play_button) else ContextCompat.getDrawable(imageView.context , com.shamlu.spotify_player.R.drawable.ic_pause_button)
+        imageView.background.setColorFilter(playerDetails?.variant ?:ContextCompat.getColor(imageView.context, com.shamlu.spotify_player.R.color.black), PorterDuff.Mode.SRC_ATOP)
 
     }
 }
@@ -107,4 +114,4 @@ fun setBottomSheetOffset(view: View , offset: Float ){
 @BindingAdapter("bindin:spotifyPlayerButtonsColors")
 fun setSpotifyPlayeButtonsColors(view : View , playerState: PlayerDetails?){
 
-    view.background.setColorFilter(playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(view.context, R.color.black), PorterDuff.Mode.SRC_ATOP)}
+    view.background.setColorFilter(playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(view.context, com.shamlu.spotify_player.R.color.black), PorterDuff.Mode.SRC_ATOP)}

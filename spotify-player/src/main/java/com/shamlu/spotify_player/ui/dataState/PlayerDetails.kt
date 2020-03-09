@@ -8,5 +8,4 @@ data class PlayerDetails (
     var buttonsAndTextsColor : Int,
     var artistName : String,
     var songName : String,
-    var image : Bitmap
-)
+    var trackUri : String)
