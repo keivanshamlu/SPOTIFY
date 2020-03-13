@@ -160,6 +160,7 @@
             android:layout_height="20dp"/>
 
         <RelativeLayout
+            binding:canSkipNext="@{viewModel.playerState}"
             android:onClick="@{() -> viewModel.playNext()}"
             binding:spotifyPlayerButtonsColors="@{viewModel.playerDetails}"
             android:id="@+id/view_next_track_background"
@@ -182,6 +183,7 @@
             android:layout_height="12dp"/>
 
         <RelativeLayout
+            binding:canSkipPrev="@{viewModel.playerState}"
             android:onClick="@{() -> viewModel.playPrevious()}"
             android:id="@+id/view_previos_track_background"
             binding:spotifyPlayerButtonsColors="@{viewModel.playerDetails}"

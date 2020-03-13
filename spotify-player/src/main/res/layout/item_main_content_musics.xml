@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="listItem"
+            type="com.spotify.protocol.types.ListItem" />
+
+        <variable
+            name="playListId"
+            type="String" />
+
+        <variable
+            name="viewModel"
+            type="com.shamlu.spotify_player.ui.ViewModelSpotifyMusicPlayer" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemsCount"
+            type="Integer" />
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{() -> viewModel.playContnet(listItem.uri)}"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/image_view_item_music"
+            binding:listItem="@{listItem}"
+            binding:playlistId="@{playListId}"
+            binding:viewModel="@{viewModel}"
+            binding:currentPosition="@{position}"
+            binding:itemsCount="@{itemsCount}"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="16sp"
+            android:layout_below="@+id/image_view_item_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{listItem.title}"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+</layout>

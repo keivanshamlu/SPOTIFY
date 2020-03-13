@@ -13,7 +13,6 @@ import com.shamlu.app.android.domain.model.player.BottomSheetState
 import com.shamlu.common.extentions.*
 import com.shamlu.spotify_player.ui.dataState.PlayerDetails
 import com.spotify.protocol.types.PlayerState
-import android.graphics.drawable.BitmapDrawable
 
 
 
@@ -60,7 +59,7 @@ fun settextViewExpandedBottomSheetAndPlayerState(textView: TextView, bottomSheet
 
     val offset = bottomSheetState?.offset ?: 0f
 
-        if(offset.minus(0.4) > 0 ){
+        if(offset.minus(0.3) > 0 ){
             textView.setAlphaWithOffsetToVisible(offset)
             textView.setTextColorsWithOffset(ContextCompat.getColor(textView.context , com.shamlu.spotify_player.R.color.white) , playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(textView.context , com.shamlu.spotify_player.R.color.black), offset)
         }
@@ -115,3 +114,16 @@ fun setBottomSheetOffset(view: View , offset: Float ){
 fun setSpotifyPlayeButtonsColors(view : View , playerState: PlayerDetails?){
 
     view.background.setColorFilter(playerState?.buttonsAndTextsColor ?:ContextCompat.getColor(view.context, com.shamlu.spotify_player.R.color.black), PorterDuff.Mode.SRC_ATOP)}
+
+
+@BindingAdapter("binding:canSkipNext")
+fun setCanSkipNext(view : View , playerState: PlayerState?) {
+
+    view.alpha = if(playerState?.playbackRestrictions?.canSkipNext != true) .5f else 1f
+}
+
+@BindingAdapter("binding:canSkipPrev")
+fun setCanSkipprev(view : View , playerState: PlayerState?) {
+
+    view.alpha = if(playerState?.playbackRestrictions?.canSkipPrev != true) .5f else 1f
+}

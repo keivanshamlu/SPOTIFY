@@ -9,18 +9,9 @@
             type="com.shamlu.spotify_player.ui.ViewModelSpotifyMusicPlayer" />
     </data>
 
-    <LinearLayout
-        android:background="@color/white"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_spotify_main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="main content" />
-
-    </LinearLayout>
+        />
 </layout>

@@ -12,6 +12,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class FragmentMain : BaseFragment() {
 
 
+
     private val viewModel : ViewModelMain by viewModel()
     override fun getViewModel(): ViewModelBase = viewModel
     private lateinit var binding : FragmentMainBinding

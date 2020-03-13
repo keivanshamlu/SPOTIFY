@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.shamlu.spotify_player.ui.ViewModelSpotifyMusicPlayer" />
+
+        <variable
+            name="item"
+            type="com.shamlu.navigation.model.spotifyPlayer.NavModelSpotifyMainContentItem" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:background="#FAF3F3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/text_view_play_list_title"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_25_dp"/>
+
+
+        <RelativeLayout
+            android:layout_marginTop="30dp"
+            android:id="@+id/button_play_playlist"
+            android:layout_below="@+id/text_view_play_list_title"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_play_playlist_button_background"
+            android:layout_width="180dp"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="play all"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                android:onClick="@{() -> viewModel.playContnet(item.uri)}"/>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/button_play_playlist"
+            android:layout_marginTop="25dp"
+            android:id="@+id/recycler_view_main_content_musics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="98dp"
+            />
+
+    </RelativeLayout>
+
+</layout>

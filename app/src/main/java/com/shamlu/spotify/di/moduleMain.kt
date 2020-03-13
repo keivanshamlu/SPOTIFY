@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val moduleMain = module {
 
-    viewModel{ ViewModelMain() }
+    viewModel{ ViewModelMain(get()) }
     factory {
        val builder = AuthenticationRequest.Builder(
         BuildConfig.CLIENT_ID,

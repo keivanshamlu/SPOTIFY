@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
 
         connectionsManager.spotifyConnection.observe(this , Observer {
 
-            it.status.takeIf { it == SpotifyConnectionsResource.Status.CONNECTED }.apply {
-
-//                mSpotifyAppRemote?.getPlayerApi()?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL")
+            when(it.status){
+                SpotifyConnectionsResource.Status.CONNECTED -> {}
+                SpotifyConnectionsResource.Status.NOT_CONNECTED -> {}
             }
 
         })
